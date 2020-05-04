@@ -14,7 +14,10 @@ def test_gravity_correction():
 def test_abv_calculator():
     og = 1.057
     fg = 1.012
-    expected_result = 131.25 * (og - fg)
+    expected_result_simple = 131.25 * (og - fg)
+    expected_result_adv = (76.08 * (og - fg) / (1.775 - og)) * (fg / 0.794)
 
-    result = calculate_abv(og, fg)
-    assert round(result, 3) == round(expected_result, 3)
+    simple_result = calculate_abv(og, fg)
+    adv_result = calculate_abv(og, fg, method="advanced")
+    assert round(simple_result, 3) == round(expected_result_simple, 3)
+    assert round(adv_result, 3) == round(expected_result_adv, 3)
