@@ -1,4 +1,4 @@
-from brewtools.utils import correct_gravity
+from brewtools.calculators import correct_gravity
 
 
 class Gravity():
